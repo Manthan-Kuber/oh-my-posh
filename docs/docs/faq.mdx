@@ -56,6 +56,8 @@ Whenever there's a segment that spikes, see if there might be updates to the und
 </TabItem>
 </Tabs>
 
+If only your Git repo paths are slow, then try running [`git gc`][git-gc] to clean up and optimize the local repository.
+
 If nothing seems to resolve the issue, feel free to [create an issue][new-issue].
 
 ### Windows Terminal: Unexpected space between segments/text
@@ -141,7 +143,7 @@ conda config --set changeps1 False
 Virtual environments created with `venv` add the active environment's name to the prompt automatically.
 To disable this behaviour, set `VIRTUAL_ENV_DISABLE_PROMPT` environment variable to `1` on your system. Example files:
 
-Note: Tilde (~) in paths refers to your user's home directory.
+Note: Tilde (~) in paths refers to your user's home directory. 
 
 <Tabs
   defaultValue="powershell"
@@ -155,7 +157,7 @@ Note: Tilde (~) in paths refers to your user's home directory.
 <TabItem value="powershell">
 
 ```powershell
-# ~/Documents/WindowsPowerShell/profile.ps1
+# Your PowerShell $PROFILE
 $env:VIRTUAL_ENV_DISABLE_PROMPT=1
 ```
 
@@ -178,6 +180,19 @@ export VIRTUAL_ENV_DISABLE_PROMPT=1
 </TabItem>
 </Tabs>
 
+### Text decoration styles like bold and dimmed don't work
+The text decoration styles are based on your terminal emulator's capabilities.
+
+A quick way to check if your terminal supports a specific style escape sequence is to take a look at the `terminfo` database, on Linux.
+Refer [this page on ArchWiki][arch-terminfo].
+
+If you are on Windows, use Windows Terminal. It closely copies the `xterm-256color` capabilities.
+See the [PowerShell docs on terminal support][ps-ansi-docs] and [this GitHub comment][xterm-gh-comment].
+
+[arch-terminfo]: https://wiki.archlinux.org/title/Bash/Prompt_customization#Terminfo_escape_sequences
+[ps-ansi-docs]: https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_ansi_terminals?view=powershell-7.2
+[xterm-gh-comment]: https://github.com/microsoft/terminal/issues/6045#issuecomment-631743728
+[git-gc]: https://git-scm.com/docs/git-gc
 [new-issue]: https://github.com/JanDeDobbeleer/oh-my-posh/issues/new/choose
 [latest]: https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest
 [wt-glyph]: https://github.com/microsoft/terminal/issues/3546
